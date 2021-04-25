@@ -26,6 +26,7 @@
     "bristol": "^0.4.0",
     "fejl": "^1.0.2",
     "http-status-codes": "^2.1.4",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
@@ -38,6 +39,7 @@
     "mongoose": "^5.11.15",
     "p-event": "^4.2.0",
     "palin": "^2.2.0",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "stoppable": "^1.1.0",
     "yenv": "^2.1.0"

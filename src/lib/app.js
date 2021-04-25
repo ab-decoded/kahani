@@ -26,7 +26,15 @@ export default async function initialize() {
     // Top middleware is the error handler.
     .use(errorHandler)
     // Allow app to maintain sessions
-    .use(session({}, app))
+    .use(
+      session(
+        {
+          key: env.SESSION_SECRET,
+          maxAge: 10 * 24 * 60 * 60 * 1000
+        },
+        app
+      )
+    )
     // Provide important security headers by default
     .use(helmet())
     // Compress all responses.

@@ -2,10 +2,15 @@
 
 import passport from 'koa-passport'
 import LocalStrategy from 'passport-local'
+import JWTStrategy from 'passport-jwt'
 import User from '../models/User'
+import { env } from './env'
 
 // Set options to pass to Passport here
-const options = {}
+const options = {
+  usernameField: 'username',
+  passwordField: 'password'
+}
 
 passport.serializeUser((user, done) => {
   done(null, user.id)
@@ -23,6 +28,7 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(
+  'login',
   new LocalStrategy.Strategy(options, (username, password, done) => {
     User.findOne({ username: username })
       .exec()
@@ -41,6 +47,23 @@ passport.use(
         return done(err)
       })
   })
+)
+
+passport.use(
+  new JWTStrategy.Strategy(
+    {
+      secretOrKey: env.JWT_SECRET,
+      jwtFromRequest: JWTStrategy.ExtractJwt.fromAuthHeaderAsBearerToken()
+    },
+    async (token, done) => {
+      try {
+        const user = await User.findOne({ _id: token.user._id })
+        return done(null, user)
+      } catch (error) {
+        done(error)
+      }
+    }
+  )
 )
 
 export default passport

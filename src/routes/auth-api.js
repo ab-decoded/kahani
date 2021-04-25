@@ -3,6 +3,7 @@ import authenticate from '../middleware/auth-middleware'
 
 const api = authService => ({
   login: async (ctx, next) => authService.login(ctx, next),
+  getUserDetails: async (ctx, next) => authService.getUserDetails(ctx, next),
   logout: async (ctx, next) => authService.logout(ctx, next)
 })
 
@@ -12,6 +13,9 @@ const api = authService => ({
 export default createController(api)
   .prefix('/auth')
   .post('/login', 'login')
+  .get('/user', 'getUserDetails', {
+    before: [authenticate]
+  })
   .get('/logout', 'logout', {
     before: [authenticate]
   })

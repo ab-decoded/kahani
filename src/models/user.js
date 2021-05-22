@@ -1,11 +1,10 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcrypt'
-import UserRole from '../domain/UserRole'
+import UserRole from '../domain/user-role'
 
 var SALT_WORK_FACTOR = 10
 
 // Schema
-
 const nameSchema = new Schema(
   {
     firstName: {

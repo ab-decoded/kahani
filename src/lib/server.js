@@ -10,11 +10,11 @@ import { logger } from './logger'
  *
  * @return {Promise<http.Server>} The configured app.
  */
-export async function createServer(app) {
+export async function createServer(callback) {
   logger.debug('Creating server...')
 
   // Creates a http server ready to listen.
-  const server = stoppable(http.createServer(app.callback()))
+  const server = stoppable(http.createServer(callback))
   server.stop = util.promisify(server.stop)
 
   // Add a `close` event listener so we can clean up resources.

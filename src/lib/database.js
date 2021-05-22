@@ -1,10 +1,10 @@
 'use strict'
 
 import mongoose from 'mongoose'
-import User from '../models/User'
+import User from '../models/user'
 import { logger } from './logger'
 import { env } from './env'
-import UserRole from '../domain/UserRole'
+import UserRole from '../domain/user-role'
 
 const connectToDatabase = async (
   databaseHostName,

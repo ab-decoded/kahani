@@ -3,7 +3,7 @@
 import passport from 'koa-passport'
 import LocalStrategy from 'passport-local'
 import JWTStrategy from 'passport-jwt'
-import User from '../models/User'
+import User from '../models/user'
 import { env } from './env'
 
 // Set options to pass to Passport here

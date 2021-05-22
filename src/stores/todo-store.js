@@ -1,7 +1,3 @@
-/**
- * In-memory todos store.
- * For demo purposes, gets the logger injected.
- */
 export default function createTodoStore(logger) {
   let __todos = []
   let __ids = 1

@@ -1,4 +1,4 @@
-import UserOperation from './UserOperation'
+import UserOperation from './user-operation'
 
 export default {
   ADMIN: {
